@@ -1,9 +1,6 @@
-import { useState } from 'react'
-// import './App.css'
-// import Form from './components/Form'
-// import ZStoredItems from './components/StoredToDo'
-import Form from './Form'
-import ZStoredItems from './StoredToDo'
+import { useState } from 'react';
+import Form from './Form';
+import ZStoredItems from './StoredToDo';
 
 // Items are ZSomething to prevent already called names to prevent syntax confusion (I spent 1 hour trying to find a problem where I unknowlingly called something a name when it was already a called method within javascript which led to a strange conflict... it didn't tell me there was a problem, but there was no output whatsoever because it was doing what it was expected to do, just not what I wanted it to do)
 
@@ -46,12 +43,15 @@ import ZStoredItems from './StoredToDo'
 // ZStoredItems
 // Stored list
 
+
+// Also "ZStoredItems" isnt being read as you have referenced it within your useState declaration, you you would need to utilise it in a way where you set the state with it such as: setZStoredItems("ZStoredItems")
+
 function ToDoList() {
   const [ZItems, ZsetStoredItems] = useState([])
   const [ZDateInput, setZDateInput] = useState('')
   const [ZTitleInput, setZTitleInput] = useState('')
   const [ZDescriptionInput, setZDescriptionInput] = useState('')
-
+  
   const AddItem = (ZItem) => {
     // Add an item to the list
     ZItem.preventDefault()
@@ -60,6 +60,23 @@ function ToDoList() {
     setZDateInput('')
     setZTitleInput('')
     setZDescriptionInput('')
+  };
+  const ZEdit = (Zindex) => {
+  //   // Edit items that are already listed into the main header, deleting the item in the process
+  //   // let ZEdtitStoredItems = [...ZItems]
+
+  //   let ZEditStoredItems = [...ZItems]
+  //   setZDateInput({})
+  //   setZTitleInput('')
+  //   setZDescriptionInput('')
+
+  //   ZEditStoredItems.value
+  //   ZEditStoredItems.splice(Zindex, 1)
+  //   ZsetStoredItems(ZEditStoredItems)
+    // ZEdtitStoredItems.splice(Zindex, 1)
+    // ZsetStoredItems(ZEdtitStoredItems)
+
+
   }
 
   const ZDelete = (Zindex) => {
@@ -82,25 +99,21 @@ function ToDoList() {
               AddItem={AddItem}
             />
 
-          {ZItems.map((ZStoredItems, Zindex) => {
+          {ZItems.map((ZProp, Zindex) => {
             return (
-            <ZStoredItems
-              ZDate={ZStoredItems.ZDate} 
-              ZTitle={ZStoredItems.ZTitle} 
-              ZDescription={ZStoredItems.ZDescription}
-              // Stores the inputed names into the StoredToDo list and outputs them
-              key={ Zindex } 
-              ZDelete={() => ZDelete(Zindex)}
-            />
-            )})}
-            
-      </div>
-  )
+            <ZStoredItems 
+            ZDate={ZProp.ZDate} 
+            ZTitle={ZProp.ZTitle} 
+            ZDescription={ZProp.ZDescription}
+            // Stores the inputed names into the StoredToDo list and outputs them
+            key={ Zindex } 
+            ZDelete={() => ZDelete(Zindex)}
+            ZEdit={() => ZEdit(Zindex)}
+          />
+          )})}
+          
+    </div>
+)
 }
 
-// const newTodo = {
-//   id: new Date().getTime(),
-//   text: todo,
-// }
-
-export default ToDoList
+export default ToDoList;
