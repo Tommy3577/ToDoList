@@ -5,17 +5,17 @@ const ZStoredItems = ({ ZDate, ZTitle, ZDescription, ZDelete, ZEdit }) => {
     return (
         <div>
         {Done ? (
-            <h3 style={{ color: 'red' }}>
+            <h3 id="RedHeading" style={{ color: 'red' }}>
                 Date:&nbsp;{ZDate}&nbsp;Title:&nbsp;{ZTitle}&nbsp;Description:&nbsp;{ZDescription}
                 <button onClick={ZDelete}>Delete Item</button>
                 </h3>
             ):( 
-            <h3 style={{ color: 'green' }}>
+            <h3 id="GreenHeading" style={{ color: 'green' }}>
                 Date:&nbsp;{ZDate}&nbsp;Title:&nbsp;{ZTitle}&nbsp;Description:&nbsp;{ZDescription} 
                 <button onClick={ZDelete}>Delete Item</button>
             </h3>
             )}
-            <button onClick={() => setDone(!Done)}>{ Done ? 'Done' : 'Not Done' }</button>
+            <button id="Marked" onClick={() => setDone(!Done)}>{ Done ? 'Done' : 'Not Done' }</button>
         </div>
     )
 }

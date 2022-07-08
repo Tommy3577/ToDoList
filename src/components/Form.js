@@ -4,7 +4,7 @@ const Form = ({ AddItem, ZDateInput, setZDateInput, ZTitleInput, setZTitleInput,
     <form onSubmit={AddItem}>
         <label>
         &nbsp;&nbsp;  Date:&nbsp;&nbsp;&nbsp;
-        <input type="text" value={ZDateInput} onChange={(ZItem) =>setZDateInput(ZItem.target.value)} />
+        <input type="text" id="Date" value={ZDateInput} onChange={(ZItem) =>setZDateInput(ZItem.target.value)} />
         </label>
         <label>
         &nbsp;&nbsp; Title:&nbsp;&nbsp;&nbsp;
